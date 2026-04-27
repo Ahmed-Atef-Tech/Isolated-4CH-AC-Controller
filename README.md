@@ -13,3 +13,22 @@ ISO-AC4-FB: 4-Channel isolated AC controller (220V/8A) designed in KiCad. Featur
 
 
 <img width="666" height="330" alt="image" src="https://github.com/user-attachments/assets/07a1809f-2456-4d7c-9783-cb38e3806429" />
+
+
+### 🔧 Known Limitations and Proposed Revisions (Rev 2.0)
+
+**1. AC Routing Topology & Isolation Constraints**
+* **Current Implementation:** Due to strict board size constraints in this initial prototype, the 220V `AC_N` line (used strictly for low-current voltage sensing/feedback) and the 5V `VCC` logic line were routed using a Daisy-Chain topology. Trace widths were set to 0.5mm, which is electrically sufficient for the minimal control current (~10mA).
+* **Engineering Assessment:** While the current capacity is well within safe margins for a 1oz copper board, I am fully aware that the daisy-chain approach in the high-voltage section makes it difficult to maintain optimal IPC-2221 clearance distances. Relying solely on soldermask for high-voltage separation is not ideal for long-term industrial reliability.
+* **Action Plan for Production (Rev 2.0):** The next revision will transition the high-voltage routing to a **Star Topology** directly from the input terminal. Furthermore, isolation milling slots will be implemented between the interconnected AC nodes to strictly enforce standard creepage distances.
+
+**2. Wireless Connectivity & IoT Integration**
+* **Action Plan for Rev 2.0:** The current prototype relies on an external microcontroller connected via pin headers. In the next revision, the component placement and routing will be heavily optimized to include a dedicated socket for an **ESP-01 module** (or a fully integrated **ESP8266/ESP32** circuit). This will allow the PCB to act as a standalone, plug-and-play IoT shield, enabling seamless Wi-Fi control and smart home integration right out of the box without any external wiring.
+
+**3. Mechanical Design & Productization**
+* **Action Plan for Rev 2.0:** To bridge the gap between a bare PCB and a consumer-ready device, a custom **3D-printable enclosure** will be designed. This will provide a professional aesthetic, ensure secure mounting, and most importantly, guarantee physical isolation and safety from high-voltage AC contacts for the end-user.
+
+**4. Schematic Refactoring & Annotation Optimization**
+* **Action Plan for Rev 2.0:** The schematic diagram will be completely refactored to enhance readability and logical flow. Component designators will be systematically re-annotated and grouped by functional blocks (e.g., sequentially per channel). This structured approach will significantly simplify troubleshooting, improve the BOM organization, and streamline the overall PCB assembly process.
+
+
