@@ -1,0 +1,15 @@
+"Id";"Designator";"Footprint";"Quantity";"Designation";"Supplier and ref";
+1;"K2,K1,K4,K3";"RELAY_G3MB-202P_DC12";4;"G3MB-202PL";;;
+2;"R2,R4,R15,R16,R12,R1,R5,R11";"R_2512_6332Metric";8;"47kΩ";;;
+3;"R17,R8,R14,R7";"R_1206_3216Metric";4;"10kΩ";;;
+4;"R13,R18,R3,R6";"R_1206_3216Metric";4;"1kΩ";;;
+5;"F1,F2,F4,F3";"FUSE_36911000000";4;"Fuse 2.5A";;;
+6;"D2,D5,D6,D1";"LED_1206_3216Metric";4;"FB_LED1";;;
+7;"J1";"PinHeader_1x10_P2.54mm_Vertical";1;"Microcontroller Connectors";;;
+8;"D3";"LED_1206_3216Metric";1;"PWR_LED";;;
+9;"U1,U4,U3,U2";"DIP-4_W7.62mm";4;"LTV-814";;;
+10;"R9,R10";"R_1206_3216Metric";2;"100kΩ";;;
+11;"C2,C4,C3,C1";"C_1206_3216Metric";4;"10uF";;;
+12;"D4";"D_SMA";1;"1N4007";;;
+13;"J2";"TerminalBlock_Phoenix_MKDS-3-6-5.08_1x06_P5.08mm_Horizontal";1;"Conn_01x06";;;
+14;"RV1";"RV_Disc_D12mm_W4mm_P7.5mm";1;"Varistor_10D431K";;;
