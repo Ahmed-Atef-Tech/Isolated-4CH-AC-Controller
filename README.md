@@ -67,4 +67,11 @@ The feedback loop operates through a secure, 4-step hardware process:
 **4. Schematic Refactoring & Annotation Optimization**
 * **Action Plan for Rev 2.0:** The schematic diagram will be completely refactored to enhance readability and logical flow. Component designators will be systematically re-annotated and grouped by functional blocks (e.g., sequentially per channel). This structured approach will significantly simplify troubleshooting, improve the BOM organization, and streamline the overall PCB assembly process.
 
+## ⚠️ BOM Corrections (Important)
+
+Please note the following two assembly corrections regarding the current `.kicad_sch` labels:
+
+1. **Fuses (F1-F4):** The schematic shows **2.5A**, but the SSR max limit is 2A. You **MUST use 1.5A or 2A Fast-Acting fuses** to safely protect the relays from overload.
+2. **SSR Model:** The schematic lists `G3MB-202PL` (Random-ON). To get the Zero-Cross switching and EMI reduction features, you must install the **`G3MB-202P`** or **`G3MB-202PEG`** (with built-in snubber) variants instead.
+
 
