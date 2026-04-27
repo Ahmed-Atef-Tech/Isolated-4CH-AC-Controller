@@ -12,3 +12,4 @@ ISO-AC4-FB: 4-Channel isolated AC controller (220V/8A) designed in KiCad. Featur
 <img width="1724" height="968" alt="ISO-AC4-FB Controller" src="https://github.com/user-attachments/assets/cde40606-4e93-45b1-aba5-ce1b0d3c8c7a" />
 
 
+<img width="666" height="330" alt="image" src="https://github.com/user-attachments/assets/07a1809f-2456-4d7c-9783-cb38e3806429" />
