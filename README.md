@@ -9,6 +9,17 @@ ISO-AC4-FB: 4-Channel isolated AC controller (220V/8A) designed in KiCad. Featur
 
 <img width="1724" height="968" alt="ISO-AC4-FB Controller1" src="https://github.com/user-attachments/assets/8354bb90-e9a3-404f-8f61-9492dd49474a" />
 
+
+## 🛡️ Uncompromising Safety Features
+
+Designing a mixed-signal board that handles 220V AC alongside 5V DC logic requires strict adherence to safety standards. This board incorporates multiple layers of electrical and physical protection to ensure user safety and device longevity:
+
+* **Transient Surge Protection (MOV):** A 10D431K Varistor is placed in parallel with the main AC input to absorb damaging voltage spikes and transients from the mains supply, protecting the downstream SSRs and loads.
+* **Individual Channel Overcurrent Protection:** Instead of relying on a single main fuse, each of the 4 output channels is individually protected by a dedicated fuse. This ensures that a short circuit or overload on one specific load will safely blow its respective fuse without shutting down the entire system or damaging the SSR.
+* **Physical Isolation Slots (Creepage Enhancement):** To completely eliminate the risk of high-voltage arcing across the PCB surface, 1.0mm milled isolation slots were routed between the high-voltage (AC) and low-voltage (DC) zones. This physically converts the creepage distance into clearance, vastly exceeding standard safety requirements.
+* **Silkscreen Safety Demarcation:** For safe handling and maintenance, the AC high-voltage region is explicitly demarcated on the silkscreen layer with clear boundary lines and "DANGER / HIGH VOLTAGE" warnings. This visual barrier prevents accidental contact by technicians during assembly or testing.
+
+
 <img width="1724" height="968" alt="ISO-AC4-FB Controller" src="https://github.com/user-attachments/assets/cde40606-4e93-45b1-aba5-ce1b0d3c8c7a" />
 
 
