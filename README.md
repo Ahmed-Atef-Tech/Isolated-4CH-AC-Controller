@@ -35,6 +35,21 @@ For the switching mechanism, traditional Electro-Mechanical Relays (EMRs) and di
 * **Low Drive Current:** The internal LED requires extremely low trigger current (~10-20mA at 5V). This allows the SSRs to be driven directly by standard logic-level signals, completely eliminating the need for external BJT driving transistors and flyback diodes.
 
 
+## 🔄 How the Active AC Feedback Works
+
+Unlike standard relay boards that blindly send a control signal without knowing the actual state of the load, this board actively monitors the AC output to verify that power is successfully reaching the terminal. 
+
+The feedback loop operates through a secure, 4-step hardware process:
+
+1. **Voltage Sampling:** When the SSR turns on and 220V AC is present at the output terminal, a minuscule sample current (~2mA) is tapped through high-value current-limiting resistors (e.g., 47kΩ).
+2. **Optical Isolation:** This sample current drives the internal bidirectional LEDs of an **LTV-814 AC Optocoupler**. This guarantees absolute galvanic isolation—transferring the status signal via light while keeping the 220V mains completely separated from the 5V logic side.
+3. **Signal Conditioning:** Because the 50Hz AC mains crosses zero 100 times per second, the optocoupler's transistor output inherently pulses. To prevent erratic MCU readings, a **10uF smoothing capacitor** paired with a 10kΩ pull-down resistor acts as a low-pass filter, converting the pulsed output into a clean, stable DC logic level.
+4. **MCU Logic Verification:** * **State HIGH (5V):** The MCU reads a solid HIGH, confirming the load is actively powered.
+   * **State LOW (0V):** The MCU reads LOW, instantly indicating that the SSR is off, the channel's fuse has blown, or there is a total mains power failure.
+
+
+
+---
 <img width="666" height="330" alt="image" src="https://github.com/user-attachments/assets/07a1809f-2456-4d7c-9783-cb38e3806429" />
 
 
