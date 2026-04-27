@@ -49,10 +49,9 @@ The feedback loop operates through a secure, 4-step hardware process:
 
 
 
----
 <img width="666" height="330" alt="image" src="https://github.com/user-attachments/assets/07a1809f-2456-4d7c-9783-cb38e3806429" />
 
-
+---
 ### 🔧 Known Limitations and Proposed Revisions (Rev 2.0)
 
 **1. AC Routing Topology & Isolation Constraints**
