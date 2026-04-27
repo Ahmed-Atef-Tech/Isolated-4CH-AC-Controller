@@ -1,5 +1,5 @@
 # Isolated-4CH-AC-Controller
-ISO-AC4-FB: 4-Channel isolated AC controller (220V/8A) designed in KiCad. Features SSRs, active AC feedback, 2oz copper, and strict safety isolation.
+ISO-AC4-FB: 4-Channel isolated AC controller (220V/8A) designed in KiCad. Features SSRs, active AC feedback, 1oz copper, and strict safety isolation.
 
 <img width="4000" height="3000" alt="IMG_20260427_044305" src="https://github.com/user-attachments/assets/db4fcc82-b6e6-4d9f-828a-f497906705eb" />
 
