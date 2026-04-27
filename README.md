@@ -35,6 +35,8 @@ For the switching mechanism, traditional Electro-Mechanical Relays (EMRs) and di
 * **Low Drive Current:** The internal LED requires extremely low trigger current (~10-20mA at 5V). This allows the SSRs to be driven directly by standard logic-level signals, completely eliminating the need for external BJT driving transistors and flyback diodes.
 
 
+<img width="666" height="330" alt="image" src="https://github.com/user-attachments/assets/07a1809f-2456-4d7c-9783-cb38e3806429" />
+
 ## 🔄 How the Active AC Feedback Works
 
 Unlike standard relay boards that blindly send a control signal without knowing the actual state of the load, this board actively monitors the AC output to verify that power is successfully reaching the terminal. 
@@ -47,9 +49,6 @@ The feedback loop operates through a secure, 4-step hardware process:
 4. **MCU Logic Verification:** * **State HIGH (5V):** The MCU reads a solid HIGH, confirming the load is actively powered.
    * **State LOW (0V):** The MCU reads LOW, instantly indicating that the SSR is off, the channel's fuse has blown, or there is a total mains power failure.
 
-
-
-<img width="666" height="330" alt="image" src="https://github.com/user-attachments/assets/07a1809f-2456-4d7c-9783-cb38e3806429" />
 
 ---
 ### 🔧 Known Limitations and Proposed Revisions (Rev 2.0)
