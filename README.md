@@ -7,8 +7,6 @@ ISO-AC4-FB: 4-Channel isolated AC controller (220V/8A) designed in KiCad. Featur
 
 <img width="3130" height="1986" alt="ISO-AC4-FB Controller_page-0001" src="https://github.com/user-attachments/assets/d99de86e-e3c4-41ab-bdb6-01920e405c57" />
 
-<img width="1724" height="968" alt="ISO-AC4-FB Controller1" src="https://github.com/user-attachments/assets/8354bb90-e9a3-404f-8f61-9492dd49474a" />
-
 
 ## 🛡️ Uncompromising Safety Features
 
@@ -22,6 +20,8 @@ Designing a mixed-signal board that handles 220V AC alongside 5V DC logic requir
 
 <img width="1724" height="968" alt="ISO-AC4-FB Controller" src="https://github.com/user-attachments/assets/cde40606-4e93-45b1-aba5-ce1b0d3c8c7a" />
 
+
+<img width="1724" height="968" alt="ISO-AC4-FB Controller1" src="https://github.com/user-attachments/assets/8354bb90-e9a3-404f-8f61-9492dd49474a" />
 
 
 ## 💡 Component Highlight: Why Omron G3MB SSRs?
