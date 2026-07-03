@@ -1,5 +1,6 @@
 # Isolated-4CH-AC-Controller
-ISO-AC4-FB: 4-Channel isolated AC controller (220V/8A) designed in KiCad. Features SSRs, active AC feedback, 1oz copper, and strict safety isolation.
+
+**ISO-AC4-FB:** A 4-Channel isolated AC controller (220V/8A) engineered in KiCad. Designed for high reliability with Solid State Relays (SSRs), active AC feedback, 1oz copper traces, and strict safety isolation routing.
 
 <img width="4000" height="3000" alt="IMG_20260427_044305" src="https://github.com/user-attachments/assets/db4fcc82-b6e6-4d9f-828a-f497906705eb" />
 
@@ -7,24 +8,23 @@ ISO-AC4-FB: 4-Channel isolated AC controller (220V/8A) designed in KiCad. Featur
 
 <img width="3130" height="1986" alt="ISO-AC4-FB Controller_page-0001" src="https://github.com/user-attachments/assets/d99de86e-e3c4-41ab-bdb6-01920e405c57" />
 
+---
 
-## 🛡️ Uncompromising Safety Features
+## <img src="https://api.iconify.design/lucide/shield.svg?color=%2358a6ff" width="24" height="24" align="absmiddle" /> Uncompromising Safety Features
 
-Designing a mixed-signal board that handles 220V AC alongside 5V DC logic requires strict adherence to safety standards. This board incorporates multiple layers of electrical and physical protection to ensure user safety and device longevity:
+Designing a mixed-signal board that handles 220V AC alongside 5V DC logic demands strict adherence to safety standards. This board incorporates multiple layers of electrical and physical protection to ensure user safety and device longevity:
 
 * **Transient Surge Protection (MOV):** A 10D431K Varistor is placed in parallel with the main AC input to absorb damaging voltage spikes and transients from the mains supply, protecting the downstream SSRs and loads.
 * **Individual Channel Overcurrent Protection:** Instead of relying on a single main fuse, each of the 4 output channels is individually protected by a dedicated fuse. This ensures that a short circuit or overload on one specific load will safely blow its respective fuse without shutting down the entire system or damaging the SSR.
 * **Physical Isolation Slots (Creepage Enhancement):** To completely eliminate the risk of high-voltage arcing across the PCB surface, 1.0mm milled isolation slots were routed between the high-voltage (AC) and low-voltage (DC) zones. This physically converts the creepage distance into clearance, vastly exceeding standard safety requirements.
 * **Silkscreen Safety Demarcation:** For safe handling and maintenance, the AC high-voltage region is explicitly demarcated on the silkscreen layer with clear boundary lines and "DANGER / HIGH VOLTAGE" warnings. This visual barrier prevents accidental contact by technicians during assembly or testing.
 
-
 <img width="1724" height="968" alt="ISO-AC4-FB Controller" src="https://github.com/user-attachments/assets/cde40606-4e93-45b1-aba5-ce1b0d3c8c7a" />
-
-
 <img width="1724" height="968" alt="ISO-AC4-FB Controller1" src="https://github.com/user-attachments/assets/8354bb90-e9a3-404f-8f61-9492dd49474a" />
 
+---
 
-## 💡 Component Highlight: Why Omron G3MB SSRs?
+## <img src="https://api.iconify.design/lucide/lightbulb.svg?color=%2358a6ff" width="24" height="24" align="absmiddle" /> Component Highlight: Why Omron G3MB SSRs?
 
 For the switching mechanism, traditional Electro-Mechanical Relays (EMRs) and discrete TRIAC circuits were intentionally avoided in favor of the **Omron G3MB Series Solid State Relays (SSRs)**. This selection provides several massive engineering advantages:
 
@@ -34,10 +34,11 @@ For the switching mechanism, traditional Electro-Mechanical Relays (EMRs) and di
 * **Silent Operation & Infinite Lifespan:** As a semiconductor device with no moving parts, the SSR operates in absolute silence (a mandatory requirement for smart home automation) and is immune to mechanical wear, contact degradation, or welding, guaranteeing a virtually infinite lifespan.
 * **Low Drive Current:** The internal LED requires extremely low trigger current (~10-20mA at 5V). This allows the SSRs to be driven directly by standard logic-level signals, completely eliminating the need for external BJT driving transistors and flyback diodes.
 
-
 <img width="666" height="330" alt="image" src="https://github.com/user-attachments/assets/07a1809f-2456-4d7c-9783-cb38e3806429" />
 
-## 🔄 How the Active AC Feedback Works
+---
+
+## <img src="https://api.iconify.design/lucide/refresh-cw.svg?color=%2358a6ff" width="24" height="24" align="absmiddle" /> How the Active AC Feedback Works
 
 Unlike standard relay boards that blindly send a control signal without knowing the actual state of the load, this board actively monitors the AC output to verify that power is successfully reaching the terminal. 
 
@@ -46,16 +47,17 @@ The feedback loop operates through a secure, 4-step hardware process:
 1. **Voltage Sampling:** When the SSR turns on and 220V AC is present at the output terminal, a minuscule sample current (~2mA) is tapped through high-value current-limiting resistors (e.g., 47kΩ).
 2. **Optical Isolation:** This sample current drives the internal bidirectional LEDs of an **LTV-814 AC Optocoupler**. This guarantees absolute galvanic isolation—transferring the status signal via light while keeping the 220V mains completely separated from the 5V logic side.
 3. **Signal Conditioning:** Because the 50Hz AC mains crosses zero 100 times per second, the optocoupler's transistor output inherently pulses. To prevent erratic MCU readings, a **10uF smoothing capacitor** paired with a 10kΩ pull-down resistor acts as a low-pass filter, converting the pulsed output into a clean, stable DC logic level.
-4. **MCU Logic Verification:** * **State HIGH (5V):** The MCU reads a solid HIGH, confirming the load is actively powered.
+4. **MCU Logic Verification:** 
+   * **State HIGH (5V):** The MCU reads a solid HIGH, confirming the load is actively powered.
    * **State LOW (0V):** The MCU reads LOW, instantly indicating that the SSR is off, the channel's fuse has blown, or there is a total mains power failure.
 
-
 ---
-### 🔧 Known Limitations and Proposed Revisions (Rev 2.0)
+
+## <img src="https://api.iconify.design/lucide/wrench.svg?color=%2358a6ff" width="24" height="24" align="absmiddle" /> Known Limitations and Proposed Revisions (Rev 2.0)
 
 **1. AC Routing Topology & Isolation Constraints**
 * **Current Implementation:** Due to strict board size constraints in this initial prototype, the 220V `AC_N` line (used strictly for low-current voltage sensing/feedback) and the 5V `VCC` logic line were routed using a Daisy-Chain topology. Trace widths were set to 0.5mm, which is electrically sufficient for the minimal control current (~10mA).
-* **Engineering Assessment:** While the current capacity is well within safe margins for a 1oz copper board, I am fully aware that the daisy-chain approach in the high-voltage section makes it difficult to maintain optimal IPC-2221 clearance distances. Relying solely on soldermask for high-voltage separation is not ideal for long-term industrial reliability.
+* **Engineering Assessment:** While the current capacity is well within safe margins for a 1oz copper board, the daisy-chain approach in the high-voltage section makes it difficult to maintain optimal IPC-2221 clearance distances. Relying solely on soldermask for high-voltage separation is not ideal for long-term industrial reliability.
 * **Action Plan for Production (Rev 2.0):** The next revision will transition the high-voltage routing to a **Star Topology** directly from the input terminal. Furthermore, isolation milling slots will be implemented between the interconnected AC nodes to strictly enforce standard creepage distances.
 
 **2. Wireless Connectivity & IoT Integration**
@@ -67,11 +69,11 @@ The feedback loop operates through a secure, 4-step hardware process:
 **4. Schematic Refactoring & Annotation Optimization**
 * **Action Plan for Rev 2.0:** The schematic diagram will be completely refactored to enhance readability and logical flow. Component designators will be systematically re-annotated and grouped by functional blocks (e.g., sequentially per channel). This structured approach will significantly simplify troubleshooting, improve the BOM organization, and streamline the overall PCB assembly process.
 
-## ⚠️ BOM Corrections (Important)
+---
+
+## <img src="https://api.iconify.design/lucide/alert-triangle.svg?color=%2358a6ff" width="24" height="24" align="absmiddle" /> BOM Corrections (Important)
 
 Please note the following two assembly corrections regarding the current `.kicad_sch` labels:
 
 1. **Fuses (F1-F4):** The schematic shows **2.5A**, but the SSR max limit is 2A. You **MUST use 1.5A or 2A Fast-Acting fuses** to safely protect the relays from overload.
-2. **SSR Model:** The schematic lists `G3MB-202PL` (Random-ON). To get the Zero-Cross switching and EMI reduction features, you must install the **`G3MB-202P`** or **`G3MB-202PEG`** (with built-in snubber) variants instead.
-
-
+2. **SSR Model:** The schematic lists `G3MB-202PL` (Random-ON). To leverage the Zero-Cross switching and EMI reduction features, you must install the **`G3MB-202P`** or **`G3MB-202PEG`** (with built-in snubber) variants instead.
